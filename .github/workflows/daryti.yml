@@ -1,0 +1,6 @@
+name: Paprastas build
+on: workflow_dispatch
+jobs:
+run:
+runs_on: macos-14
+-run: echo "test"
