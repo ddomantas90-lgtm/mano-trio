@@ -1,4 +1,4 @@
-name: Build Trio (No Certificates)
+name: Build Trio App
 
 on:
 workflow_dispatch:
@@ -16,18 +16,11 @@ submodules: recursive
 run: sudo xcode-select -s /Applications/Xcode_15.4.app
 
 - name: Install Dependencies
-run: |
-xcodebuild -resolvePackageDependencies
+run: xcodebuild -resolvePackageDependencies
 
-- name: Build App (Debug Mode)
+- name: Build App
 run: |
-xcodebuild -project Trio.xcodeproj \
--scheme Trio \
--configuration Debug \
--sdk iphoneos \
--allowProvisioningUpdates \
-CODE_SIGNING_ALLOWED=NO \
-clean build
+xcodebuild -project Trio.xcodeproj -scheme Trio -configuration Debug -sdk iphoneos -allowProvisioningUpdates CODE_SIGNING_ALLOWED=NO clean build
 
 - name: Package IPA
 run: |
